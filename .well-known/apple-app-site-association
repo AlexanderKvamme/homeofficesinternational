@@ -1,0 +1,12 @@
+{
+	"applinks": {
+		"apps": [],
+		"details": [{
+			"appID": "6443874886.com.tietoevry.AppClipContainer",
+			"paths": ["*"]
+		}]
+	},
+	"appclips": {
+		"apps": ["6443874886.com.tietoevry.AppClipContainer.Clip"]
+	}
+}
