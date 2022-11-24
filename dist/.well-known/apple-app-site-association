@@ -2,11 +2,11 @@
 	"applinks": {
 		"apps": [],
 		"details": [{
-			"appID": "6443874886.com.tietoevry.AppClipContainer",
+			"appID": "54KTRMAZEH.com.tietoevry.AppClipContainer",
 			"paths": ["*"]
 		}]
 	},
 	"appclips": {
-		"apps": ["6443874886.com.tietoevry.AppClipContainer.Clip"]
+		"apps": ["54KTRMAZEH.com.tietoevry.AppClipContainer.Clip"]
 	}
 }
