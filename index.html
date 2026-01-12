@@ -10,7 +10,7 @@
         :root {
             color-scheme: light;
             --bg: #f2f0ed;
-            --card: #f7f5f2;
+            --card: #f2edea;
             --ink: #1e1c19;
             --muted: #6a6258;
             --accent: #1e1c19;
@@ -28,7 +28,7 @@
             margin: 0;
             font-family: "Manrope", "Segoe UI", sans-serif;
             color: var(--ink);
-            background: radial-gradient(circle at top, #ffffff 0%, #efebe7 45%, #e6e0da 100%);
+            background: #f8f4f2;
             min-height: 100vh;
             padding: 48px 20px 60px;
         }
@@ -95,18 +95,44 @@
         }
 
         .section-block--logos {
-            background: #f7f4f1;
+            background: #f8f4f2;
             z-index: 3;
         }
 
+        .section-block--logos::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -90px;
+            height: 90px;
+            background: #f8f4f2;
+            z-index: -1;
+        }
+
         .section-block--services {
-            background: #f1ede8;
+            background: #f2ede9;
             z-index: 2;
+            margin-top: -70px;
+            padding-top: 64px;
         }
 
         .section-block--cta {
             background: #efe9e3;
             z-index: 1;
+            margin-top: 0;
+            padding-top: 64px;
+        }
+
+        .section-block--cta::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -90px;
+            height: 90px;
+            background: #efe9e3;
+            z-index: -1;
         }
 
         .nav {
@@ -120,6 +146,7 @@
         .nav a {
             color: var(--ink);
             text-decoration: none;
+            opacity: 0.6;
         }
 
         .nav .pill {
@@ -223,14 +250,14 @@
         }
 
         .logos {
-            margin-top: 6px;
-            background: #f6f2ee;
+            margin-top: 24px;
+            background: transparent;
             border-radius: 999px;
             padding: 18px 24px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 18px;
-            align-items: center;
+            align-items: start;
             text-align: center;
             font-size: 0.85rem;
             color: #544f46;
@@ -239,11 +266,27 @@
             animation: fadeUp 0.9s ease forwards;
         }
 
+        .logo-item {
+            display: grid;
+            gap: 10px;
+            justify-items: center;
+            align-items: start;
+        }
+
+        .logo-item img {
+            width: 54px;
+            height: 54px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid #e6dfd8;
+            background: #fff;
+        }
+
         .section-title {
             text-align: center;
             font-family: "Fraunces", "Georgia", serif;
             font-size: 1.7rem;
-            margin-bottom: 8px;
+            margin: 36px 0 8px;
         }
 
         .section-subtitle {
@@ -262,7 +305,6 @@
             background: #ffffff;
             border-radius: 20px;
             padding: 20px;
-            border: 1px solid var(--border);
             min-height: 170px;
             animation: fadeUp 1s ease forwards;
         }
@@ -285,7 +327,11 @@
             background: #f4efe9;
             display: grid;
             place-items: center;
-            font-size: 1.1rem;
+        }
+
+        .service-icon img {
+            width: 18px;
+            height: 18px;
         }
 
         .cta-panel {
@@ -379,36 +425,62 @@
 
         <section class="section-block section-block--logos">
             <div class="logos">
-                <div>National Bank</div>
-                <div>MatteRed</div>
-                <div>Coca-Cola</div>
-                <div>Adobe</div>
-                <div>Subway</div>
-                <div>Codecademy</div>
+                <div class="logo-item">
+                    <img src="assets/weeklogo.png" alt="Week logo">
+                    <span>Week App</span>
+                </div>
+                <div class="logo-item">
+                    <img src="assets/notchificationlogo.svg" alt="Notchification logo">
+                    <span>Notchification</span>
+                </div>
+                <div class="logo-item">
+                    <img src="assets/heartsforeyeslogo.png" alt="Hearts for Eyes logo">
+                    <span>Hearts for Eyes boys</span>
+                </div>
+                <div class="logo-item">
+                    <img src="assets/ReelDealLolo.png" alt="Reel Deal logo">
+                    <span>Reel Deal</span>
+                </div>
+                <div class="logo-item">
+                    <img src="assets/squereeyeslogo.png" alt="Square Eyes logo">
+                    <span>Square Eyes</span>
+                </div>
+                <div class="logo-item">
+                    <img src="assets/DeskappLogo.png" alt="Deskapp logo">
+                    <span>Pomodoro</span>
+                </div>
             </div>
         </section>
 
         <section class="section-block section-block--services">
-            <h2 class="section-title">Collaborate with brands and agencies to create impactful results.</h2>
-            <p class="section-subtitle">Strategy, design, and build support for everything from quick prototypes to full product rollouts.</p>
+            <h2 class="section-title">Products made to be loved.</h2>
+            <p class="section-subtitle">Built with pristine eyes from the first sketch.</p>
             <div class="services">
                 <div class="service-card">
-                    <div class="service-icon">UX</div>
+                    <div class="service-icon">
+                        <img src="assets/icon-ux.svg" alt="UX icon">
+                    </div>
                     <h3>UX & UI</h3>
                     <p>Design systems, flows, and experience shaping for calm, productive apps.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">WA</div>
+                    <div class="service-icon">
+                        <img src="assets/icon-mobile.svg" alt="Web and mobile icon">
+                    </div>
                     <h3>Web & Mobile</h3>
                     <p>Responsive builds with crisp typography and careful motion.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">BC</div>
+                    <div class="service-icon">
+                        <img src="assets/icon-brand.svg" alt="Brand icon">
+                    </div>
                     <h3>Brand & Creative</h3>
                     <p>Identity, tone, and naming that makes products feel intentional.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">DEV</div>
+                    <div class="service-icon">
+                        <img src="assets/icon-dev.svg" alt="Development icon">
+                    </div>
                     <h3>Development</h3>
                     <p>Front-end engineering to bring new ideas into the world.</p>
                 </div>
@@ -417,9 +489,9 @@
 
         <section class="section-block section-block--cta">
             <div class="cta-panel">
-                <h2>Tell me about your next project</h2>
+                <h2>Drop me a message</h2>
                 <div class="cta-group">
-                    <a class="cta-primary" href="mailto:alexanderkvamme@gmail.com">Start a project</a>
+                    <a class="cta-primary" href="mailto:alexanderkvamme@gmail.com">Send email</a>
                     <a class="cta-secondary" href="privacy-policy.html">View privacy</a>
                 </div>
             </div>
