@@ -5,68 +5,434 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Offices International</title>
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;600&display=swap");
+
+        :root {
+            color-scheme: light;
+            --bg: #f2f0ed;
+            --card: #f7f5f2;
+            --ink: #1e1c19;
+            --muted: #6a6258;
+            --accent: #1e1c19;
+            --pill: #ffffff;
+            --border: #ded8d1;
+            --shadow: 0 22px 45px rgba(24, 20, 16, 0.18);
+            --hero-image-size: 216px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
+            margin: 0;
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: radial-gradient(circle at top, #ffffff 0%, #efebe7 45%, #e6e0da 100%);
+            min-height: 100vh;
+            padding: 48px 20px 60px;
+        }
+
+        .page {
+            max-width: 980px;
             margin: 0 auto;
-            padding: 20px;
+            background: var(--card);
+            border-radius: 34px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
+
+        .page::before,
+        .page::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(0);
+            opacity: 0.5;
+            pointer-events: none;
         }
-        h1 {
-            font-size: 2.5rem;
+
+        .page::before {
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+            top: -180px;
+            right: -160px;
         }
-        .content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+
+        .page::after {
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(246, 237, 227, 0.85), rgba(246, 237, 227, 0));
+            bottom: -200px;
+            left: -180px;
         }
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        .section {
+            padding: 34px 48px;
         }
-        .email-button {
-            display: inline-block;
-            background-color: #4285f4;
-            color: white;
-            padding: 12px 24px;
+
+        .section-block {
+            padding: 28px 48px;
+            border-radius: 0 0 90px 90px;
+            position: relative;
+            z-index: 1;
+            background: #efe9e3;
+        }
+
+        .section-block--dark-wrap {
+            display: none;
+        }
+
+        .section-block + .section-block {
+            margin-top: -34px;
+        }
+
+        .section-block--hero {
+            background: #f2efec;
+            z-index: 4;
+        }
+
+        .section-block--logos {
+            background: #f7f4f1;
+            z-index: 3;
+        }
+
+        .section-block--services {
+            background: #f1ede8;
+            z-index: 2;
+        }
+
+        .section-block--cta {
+            background: #efe9e3;
+            z-index: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.9rem;
+        }
+
+        .nav a {
+            color: var(--ink);
             text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            margin: 20px 0;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
         }
-        .email-button:hover {
-            background-color: #3367d6;
+
+        .nav .pill {
+            background: var(--pill);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-weight: 600;
+            font-size: 0.82rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04);
         }
-        .contact-section {
+
+        .hero {
             text-align: center;
-            margin: 40px 0;
+            padding: 30px 70px 10px;
+            position: relative;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            transform: rotate(-4deg);
+            justify-content: center;
+        }
+
+        .hero-badge img {
+            width: var(--hero-image-size);
+            height: var(--hero-image-size);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid #fff;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero-tag {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 10px 38px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.06);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(calc(var(--hero-image-size) / 4), -50%);
+            min-width: 240px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .hero h1 {
+            font-family: "Fraunces", "Georgia", serif;
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            margin: 18px 0 12px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin: 0 auto 26px;
+            max-width: 520px;
+        }
+
+        .cta-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-primary,
+        .cta-secondary {
+            text-decoration: none;
+            border-radius: 999px;
+            padding: 12px 22px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 14px 24px rgba(30, 28, 25, 0.2);
+        }
+
+        .cta-secondary {
+            background: #fff;
+            color: var(--ink);
+            border: 1px solid var(--border);
+        }
+
+        .cta-primary:hover,
+        .cta-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .logos {
+            margin-top: 6px;
+            background: #f6f2ee;
+            border-radius: 999px;
+            padding: 18px 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 18px;
+            align-items: center;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #544f46;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            animation: fadeUp 0.9s ease forwards;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: "Fraunces", "Georgia", serif;
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 26px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            min-height: 170px;
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .service-card h3 {
+            margin: 10px 0 8px;
+            font-size: 1rem;
+        }
+
+        .service-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .service-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: #f4efe9;
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem;
+        }
+
+        .cta-panel {
+            background: #f8f5f1;
+            border-radius: 26px;
+            text-align: center;
+            padding: 32px 20px;
+            margin: 22px 0 10px;
+            animation: fadeUp 1.1s ease forwards;
+        }
+
+        .cta-panel h2 {
+            font-family: "Fraunces", "Georgia", serif;
+            margin: 0 0 12px;
+            font-size: 1.9rem;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .section {
+                padding: 28px 22px;
+            }
+
+            .section-block {
+                padding: 24px 18px;
+                border-radius: 60px;
+            }
+
+            .hero {
+                padding: 22px 12px 10px;
+            }
+
+            .nav {
+                flex-direction: column;
+            }
+
+            .logos {
+                border-radius: 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Home Offices International</h1>
-        <p>This is the home offices of Lord Fresh. It will host a bunch of cool apps</p>
-    </header>
-    
-    <div class="contact-section">
-        <h2>Contact Us</h2>
-        <a href="mailto:alexanderkvamme@gmail.com" class="email-button">Want support? Send us a mail</a>
-    </div>
-    
-    <footer>
-        <p>&copy; 2025 Home Offices International</p>
-    </footer>
+    <main class="page">
+        <div class="section-block section-block--hero">
+            <div class="nav">
+                <a href="mailto:alexanderkvamme@gmail.com">alexanderkvamme@gmail.com</a>
+                <div class="cta-group">
+                    <span class="pill">Oslo</span>
+                    <span class="pill">Norway</span>
+                </div>
+            </div>
+
+            <section class="hero">
+                <div class="hero-badge">
+                    <img src="assets/ceo2.jpg" alt="CEO portrait">
+                    <span class="hero-tag">CEO - Alexander Kvamme</span>
+                </div>
+                <h1>Building digital products, brands, and experiences.</h1>
+                <p>Home Offices International is the creative workspace for Lord Fresh, shipping thoughtful apps and future-ready digital environments.</p>
+                <div class="cta-group">
+                    <a class="cta-primary" href="mailto:alexanderkvamme@gmail.com">Contact Studio</a>
+                    <a class="cta-secondary" href="privacy-policy.html">Privacy Policy</a>
+                </div>
+            </section>
+        </div>
+
+        <section class="section-block section-block--logos">
+            <div class="logos">
+                <div>National Bank</div>
+                <div>MatteRed</div>
+                <div>Coca-Cola</div>
+                <div>Adobe</div>
+                <div>Subway</div>
+                <div>Codecademy</div>
+            </div>
+        </section>
+
+        <section class="section-block section-block--services">
+            <h2 class="section-title">Collaborate with brands and agencies to create impactful results.</h2>
+            <p class="section-subtitle">Strategy, design, and build support for everything from quick prototypes to full product rollouts.</p>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">UX</div>
+                    <h3>UX & UI</h3>
+                    <p>Design systems, flows, and experience shaping for calm, productive apps.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">WA</div>
+                    <h3>Web & Mobile</h3>
+                    <p>Responsive builds with crisp typography and careful motion.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">BC</div>
+                    <h3>Brand & Creative</h3>
+                    <p>Identity, tone, and naming that makes products feel intentional.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">DEV</div>
+                    <h3>Development</h3>
+                    <p>Front-end engineering to bring new ideas into the world.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block section-block--cta">
+            <div class="cta-panel">
+                <h2>Tell me about your next project</h2>
+                <div class="cta-group">
+                    <a class="cta-primary" href="mailto:alexanderkvamme@gmail.com">Start a project</a>
+                    <a class="cta-secondary" href="privacy-policy.html">View privacy</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="section">
+            <footer>
+                <span>&copy; 2025 Home Offices International</span>
+                <span>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                </span>
+            </footer>
+        </div>
+    </main>
 </body>
 </html>
-
