@@ -154,6 +154,10 @@
             padding: 40px 60px;
         }
 
+        .section * {
+            overflow: visible;
+        }
+
         .section h2 {
             font-family: "Fraunces", "Georgia", serif;
             font-size: 1.95rem;
@@ -352,6 +356,112 @@
             margin-bottom: 0;
         }
 
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .support-card {
+            background: #f8f5f1;
+            border-radius: 20px;
+            padding: 18px;
+            border: 1px solid rgba(222, 216, 209, 0.6);
+        }
+
+        .support-card h3 {
+            margin: 0 0 10px;
+            font-family: "Fraunces", "Georgia", serif;
+            font-size: 1.1rem;
+        }
+
+        .support-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .ticker-section {
+            background: #f2ede9;
+            margin-top: 32px;
+            padding-top: 64px;
+            padding-left: 0;
+            padding-right: 0;
+            border-radius: 0 0 90px 90px;
+            position: relative;
+        }
+
+        .ticker-section .section-title,
+        .ticker-section .section-subtitle {
+            padding: 0 60px;
+        }
+
+
+        .ticker-wrap {
+            display: grid;
+            gap: 16px;
+            overflow: hidden;
+            padding: 6px 0 24px;
+        }
+
+        .ticker-row {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            width: max-content;
+            animation: tickerLeft 45s linear infinite;
+        }
+
+        .ticker-row--right .ticker-track {
+            animation-name: tickerRight;
+        }
+
+        .ticker-track-group {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .ticker-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: #f8f5f1;
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: #5a5248;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .ticker-card img {
+            width: 18px;
+            height: 18px;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        @keyframes tickerLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes tickerRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
         footer {
             text-align: center;
             font-size: 0.85rem;
@@ -456,27 +566,78 @@
             <p>Save HOURS a week by letting us track the progress while you do other stuff. Prompt or compile, and learn something new while waiting.</p>
         </section>
 
-        <section class="section">
-            <h2>Track your build progress in the background</h2>
-            <ul class="feature-list">
-                <li>
-                    <span class="list-number">1.</span>
-                    <span>Animated progress bar that lives in the notch.</span>
-                    <span class="list-detail">Quietly tracks builds and tasks while you keep working.</span>
-                </li>
-                <li>
-                    <span class="list-number">2.</span>
-                    <span>Confetti celebration when tasks complete.</span>
-                    <span class="list-detail">A subtle reward when the wait is over.</span>
-                </li>
-                <li>
-                    <span class="list-number">3.</span>
-                    <span>Lightweight menu bar app - no dock icon, no distractions.</span>
-                    <span class="list-detail">Stays out of the way and keeps your workspace clean.</span>
-                </li>
-            </ul>
+        <section class="section ticker-section">
+            <h2 class="section-title">Notification support</h2>
+            <p class="section-subtitle">A moving snapshot of apps we can surface in the notch.</p>
+            <div class="ticker-wrap">
+                <div class="ticker-row">
+                    <div class="ticker-track">
+                        <div class="ticker-track-group">
+                            <div class="ticker-card"><img src="../assets/icons/claude.svg" alt="Claude">Claude</div>
+                            <div class="ticker-card"><img src="../assets/icons/opencode.svg" alt="Opencode">Opencode</div>
+                            <div class="ticker-card"><img src="../assets/icons/codex.svg" alt="Codex">Codex</div>
+                            <div class="ticker-card"><img src="../assets/icons/xcode.svg" alt="Xcode">Xcode</div>
+                            <div class="ticker-card"><img src="../assets/icons/android-studio.svg" alt="Android Studio">Android Studio</div>
+                            <div class="ticker-card"><img src="../assets/icons/dropbox.svg" alt="Dropbox">Dropbox</div>
+                            <div class="ticker-card"><img src="../assets/icons/google-drive.svg" alt="Google Drive">Google Drive</div>
+                            <div class="ticker-card"><img src="../assets/icons/onedrive.svg" alt="OneDrive">OneDrive</div>
+                            <div class="ticker-card"><img src="../assets/icons/icloud.svg" alt="iCloud">iCloud</div>
+                        </div>
+                        <div class="ticker-track-group" aria-hidden="true">
+                            <div class="ticker-card"><img src="../assets/icons/claude.svg" alt="">Claude</div>
+                            <div class="ticker-card"><img src="../assets/icons/opencode.svg" alt="">Opencode</div>
+                            <div class="ticker-card"><img src="../assets/icons/codex.svg" alt="">Codex</div>
+                            <div class="ticker-card"><img src="../assets/icons/xcode.svg" alt="">Xcode</div>
+                            <div class="ticker-card"><img src="../assets/icons/android-studio.svg" alt="">Android Studio</div>
+                            <div class="ticker-card"><img src="../assets/icons/dropbox.svg" alt="">Dropbox</div>
+                            <div class="ticker-card"><img src="../assets/icons/google-drive.svg" alt="">Google Drive</div>
+                            <div class="ticker-card"><img src="../assets/icons/onedrive.svg" alt="">OneDrive</div>
+                            <div class="ticker-card"><img src="../assets/icons/icloud.svg" alt="">iCloud</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticker-row ticker-row--right">
+                    <div class="ticker-track">
+                        <div class="ticker-track-group">
+                            <div class="ticker-card"><img src="../assets/icons/finder.svg" alt="Finder">Finder</div>
+                            <div class="ticker-card"><img src="../assets/icons/installer.svg" alt="Installer">Installer</div>
+                            <div class="ticker-card"><img src="../assets/icons/app-store.svg" alt="App Store">App Store</div>
+                            <div class="ticker-card"><img src="../assets/icons/automator.svg" alt="Automator">Automator</div>
+                            <div class="ticker-card"><img src="../assets/icons/script-editor.svg" alt="Script Editor">Script Editor</div>
+                            <div class="ticker-card"><img src="../assets/icons/downloads.svg" alt="Downloads">Downloads</div>
+                            <div class="ticker-card"><img src="../assets/icons/davinci-resolve.svg" alt="DaVinci Resolve">DaVinci Resolve</div>
+                        </div>
+                        <div class="ticker-track-group" aria-hidden="true">
+                            <div class="ticker-card"><img src="../assets/icons/finder.svg" alt="">Finder</div>
+                            <div class="ticker-card"><img src="../assets/icons/installer.svg" alt="">Installer</div>
+                            <div class="ticker-card"><img src="../assets/icons/app-store.svg" alt="">App Store</div>
+                            <div class="ticker-card"><img src="../assets/icons/automator.svg" alt="">Automator</div>
+                            <div class="ticker-card"><img src="../assets/icons/script-editor.svg" alt="">Script Editor</div>
+                            <div class="ticker-card"><img src="../assets/icons/downloads.svg" alt="">Downloads</div>
+                            <div class="ticker-card"><img src="../assets/icons/davinci-resolve.svg" alt="">DaVinci Resolve</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticker-row">
+                    <div class="ticker-track">
+                        <div class="ticker-track-group">
+                            <div class="ticker-card"><img src="../assets/icons/teams.svg" alt="Teams">Teams</div>
+                            <div class="ticker-card"><img src="../assets/icons/calendar.svg" alt="Calendar">Calendar</div>
+                            <div class="ticker-card"><img src="../assets/icons/claude.svg" alt="Claude">Claude</div>
+                            <div class="ticker-card"><img src="../assets/icons/opencode.svg" alt="Opencode">Opencode</div>
+                            <div class="ticker-card"><img src="../assets/icons/codex.svg" alt="Codex">Codex</div>
+                        </div>
+                        <div class="ticker-track-group" aria-hidden="true">
+                            <div class="ticker-card"><img src="../assets/icons/teams.svg" alt="">Teams</div>
+                            <div class="ticker-card"><img src="../assets/icons/calendar.svg" alt="">Calendar</div>
+                            <div class="ticker-card"><img src="../assets/icons/claude.svg" alt="">Claude</div>
+                            <div class="ticker-card"><img src="../assets/icons/opencode.svg" alt="">Opencode</div>
+                            <div class="ticker-card"><img src="../assets/icons/codex.svg" alt="">Codex</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-
         <section class="section">
             <div class="split-panel">
                 <div class="split-card">
@@ -487,6 +648,61 @@
                     <h2>Ohh god here comes the price...</h2>
                     <p>Well surprise... Its cheap as hell. Get 40 minutes of extra relaxation every day, increase fun by 30%. Can you really put a price on that?</p>
                     <div class="footnote">*Relaxation time estimate based on typical build cycles.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Notchification support</h2>
+            <p>We surface progress and status from the apps you already use.</p>
+            <div class="support-grid">
+                <div class="support-card">
+                    <h3>AI / Dev Tools</h3>
+                    <ul>
+                        <li>Claude — Claude CLI activity</li>
+                        <li>Opencode — Opencode CLI</li>
+                        <li>Codex — OpenAI Codex CLI</li>
+                    </ul>
+                </div>
+                <div class="support-card">
+                    <h3>IDEs</h3>
+                    <ul>
+                        <li>Xcode — Build activity</li>
+                        <li>Android Studio — Gradle builds</li>
+                    </ul>
+                </div>
+                <div class="support-card">
+                    <h3>Cloud Storage</h3>
+                    <ul>
+                        <li>Dropbox — Sync activity</li>
+                        <li>Google Drive — Sync activity</li>
+                        <li>OneDrive — Sync activity</li>
+                        <li>iCloud — Sync activity</li>
+                    </ul>
+                </div>
+                <div class="support-card">
+                    <h3>System / Apps</h3>
+                    <ul>
+                        <li>Finder — File copy operations</li>
+                        <li>Installer — macOS package installs</li>
+                        <li>App Store — App downloads</li>
+                        <li>Automator — Workflow execution</li>
+                        <li>Script Editor — Script execution</li>
+                        <li>Downloads — Browser downloads (Chrome, Safari, Firefox)</li>
+                        <li>DaVinci Resolve — Video rendering</li>
+                    </ul>
+                </div>
+                <div class="support-card">
+                    <h3>Communication</h3>
+                    <ul>
+                        <li>Teams — Camera preview when in calls</li>
+                    </ul>
+                </div>
+                <div class="support-card">
+                    <h3>Calendar</h3>
+                    <ul>
+                        <li>Calendar — Morning overview & meeting reminders</li>
+                    </ul>
                 </div>
             </div>
         </section>
