@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notchifications - Home Offices International</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;600&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap");
 
         :root {
             color-scheme: light;
@@ -172,6 +172,21 @@
             max-width: 650px;
         }
 
+        .section--preview {
+            padding-top: 70px;
+            position: relative;
+        }
+
+        .section--preview::before {
+            content: "✦";
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.4rem;
+            color: rgba(90, 82, 72, 0.18);
+        }
+
         .callout {
             background: #fff;
             border-radius: 22px;
@@ -187,10 +202,26 @@
         .chip-row {
             display: inline-flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 20px;
             align-items: center;
             justify-content: center;
             margin: 8px 6px;
+            width: 100%;
+        }
+
+        .chip-section {
+            position: relative;
+            padding-top: 52px;
+        }
+
+        .chip-section::before {
+            content: "✺";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.4rem;
+            color: rgba(90, 82, 72, 0.18);
         }
 
         .chip {
@@ -200,26 +231,26 @@
             padding: 6px 12px;
             border-radius: 999px;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
             border: 1px solid transparent;
         }
 
         .chip--claude {
             background: #fff1d6;
             border-color: #f0d7a6;
-            color: #2c2314;
+            color: #3d2f18;
         }
 
         .chip--xcode {
             background: #e1ecff;
             border-color: #b8ccf5;
-            color: #1b2d4d;
+            color: #243a63;
         }
 
         .chip--android {
             background: #e4f7e9;
             border-color: #bfe6c9;
-            color: #1f3b2a;
+            color: #2b4a35;
         }
 
         .feature-list {
@@ -326,10 +357,12 @@
         }
 
         .footnote {
-            font-size: 0.85rem;
+            font-size: 12px;
             color: var(--muted);
-            text-align: center;
-            margin-top: 6px;
+            text-align: left;
+            margin-top: 16px;
+            margin-bottom: 0;
+            font-family: "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         }
 
         .split-panel {
@@ -337,14 +370,17 @@
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 28px;
             align-items: start;
+            justify-items: start;
+            margin-top: 20px;
         }
 
         .split-card {
             background: #f8f5f1;
             border-radius: 24px;
-            padding: 24px;
+            padding: 30px;
             border: 1px solid rgba(222, 216, 209, 0.6);
             box-shadow: 0 18px 32px rgba(24, 20, 16, 0.08);
+            text-align: left;
         }
 
         .split-card h2 {
@@ -357,23 +393,32 @@
         }
 
         .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-            margin-top: 18px;
+            column-count: 3;
+            column-gap: 20px;
+            margin-top: 28px;
+            column-fill: balance;
         }
 
         .support-card {
-            background: #f8f5f1;
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(243, 238, 232, 0.7));
+            border-radius: 22px;
             padding: 18px;
-            border: 1px solid rgba(222, 216, 209, 0.6);
+            border: 1px solid rgba(222, 216, 209, 0.5);
+            position: relative;
+            overflow: hidden;
+            break-inside: avoid;
+            margin-bottom: 20px;
         }
 
         .support-card h3 {
-            margin: 0 0 10px;
+            margin: 22px 0 18px;
             font-family: "Fraunces", "Georgia", serif;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            color: #4a4239;
+            text-align: center;
         }
 
         .support-card ul {
@@ -381,19 +426,144 @@
             padding: 0;
             margin: 0;
             display: grid;
-            gap: 8px;
+            gap: 14px;
             color: var(--muted);
             font-size: 0.95rem;
+            padding-bottom: 20px;
+        }
+
+        .support-section .section-title {
+            font-size: 2.6rem;
+            margin-bottom: 14px;
+        }
+
+        .support-section .section-subtitle {
+            max-width: 640px;
+            margin: 0 auto 6px;
+        }
+
+        .support-subtext {
+            margin: 0 auto 6px;
+        }
+
+        .support-section {
+            position: relative;
+            padding-top: 52px;
+        }
+
+        .support-section::before {
+            content: "✹";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.4rem;
+            color: rgba(90, 82, 72, 0.18);
+        }
+
+        .support-subtext--tight {
+            margin-top: 0;
+        }
+
+        .support-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: 18px;
+        }
+
+        @media (max-width: 980px) {
+            .support-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .support-grid {
+                column-count: 1;
+            }
+        }
+
+        .support-item {
+            display: grid;
+            grid-template-columns: 18px 1fr;
+            gap: 10px;
+            align-items: start;
+        }
+
+        .support-icon {
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .support-icon img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .support-app {
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .support-features {
+            margin-top: 4px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 0.82rem;
+        }
+
+        .support-feature {
+            padding: 4px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(222, 216, 209, 0.3);
+            background: #f8f5f1;
+            color: #5a5248;
+        }
+
+        .support-divider {
+            height: 1px;
+            background: rgba(222, 216, 209, 0.45);
+            width: 70%;
+            margin: 10px auto 20px;
+        }
+
+        .support-card::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+            top: -40px;
+            right: -40px;
+            opacity: 0.6;
+            pointer-events: none;
         }
 
         .ticker-section {
             background: #f2ede9;
             margin-top: 32px;
-            padding-top: 64px;
+            padding-top: 74px;
             padding-left: 0;
             padding-right: 0;
             border-radius: 0 0 90px 90px;
             position: relative;
+        }
+
+        .ticker-section::before {
+            content: "✸";
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.4rem;
+            color: rgba(90, 82, 72, 0.18);
+            letter-spacing: 0.2em;
         }
 
         .ticker-section .section-title,
@@ -476,6 +646,21 @@
             align-items: center;
         }
 
+        .buy-section {
+            position: relative;
+            padding-top: 52px;
+        }
+
+        .buy-section::before {
+            content: "✼";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.4rem;
+            color: rgba(90, 82, 72, 0.18);
+        }
+
         .buy-cta-note {
             font-size: 0.85rem;
             color: var(--muted);
@@ -498,6 +683,8 @@
             border: 1px solid var(--border);
             border-radius: 999px;
             padding: 6px 12px;
+            cursor: default;
+            user-select: none;
         }
 
         @media (max-width: 720px) {
@@ -534,11 +721,11 @@
             <h1>Notchifications</h1>
             <p>Progress bars in your notch.</p>
             <div class="cta-row">
-                <a class="cta-primary" href="mailto:alexanderkvamme@gmail.com">Download Notchification</a>
+                <a class="cta-primary" href="/notchification/Notchification-1.0.31.zip">Download</a>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section section--preview">
             <h2>Product preview</h2>
             <p>I made a small demo.</p>
             <div class="video-card">
@@ -553,21 +740,18 @@
             </div>
         </section>
 
-        <section class="section">
-            <h2>
-                Tired of looking at sloooow progress bars in
-                <span class="chip-row">
-                    <span class="chip chip--claude">Claude</span>
-                    <span class="chip chip--xcode">Xcode</span>
-                    <span class="chip chip--android">Android Studio</span>
-                </span>
-                ?
-            </h2>
+        <section class="section chip-section">
+            <div class="chip-row">
+                <span class="chip chip--claude">Claude</span>
+                <span class="chip chip--xcode">Xcode</span>
+                <span class="chip chip--android">Android Studio</span>
+            </div>
+            <h2>Sick of waiting for sloooow builds?</h2>
             <p>Save HOURS a week by letting us track the progress while you do other stuff. Prompt or compile, and learn something new while waiting.</p>
         </section>
 
         <section class="section ticker-section">
-            <h2 class="section-title">Notification support</h2>
+            <h2 class="section-title">New Apps Every Day.</h2>
             <p class="section-subtitle">A moving snapshot of apps we can surface in the notch.</p>
             <div class="ticker-wrap">
                 <div class="ticker-row">
@@ -576,6 +760,8 @@
                             <div class="ticker-card"><img src="../assets/icons/claude.svg" alt="Claude">Claude</div>
                             <div class="ticker-card"><img src="../assets/icons/opencode.svg" alt="Opencode">Opencode</div>
                             <div class="ticker-card"><img src="../assets/icons/codex.svg" alt="Codex">Codex</div>
+                            <div class="ticker-card"><img src="../assets/icons/iterm2.svg" alt="iTerm2">iTerm2</div>
+                            <div class="ticker-card"><img src="../assets/icons/terminal.svg" alt="Terminal">Terminal</div>
                             <div class="ticker-card"><img src="../assets/icons/xcode.svg" alt="Xcode">Xcode</div>
                             <div class="ticker-card"><img src="../assets/icons/android-studio.svg" alt="Android Studio">Android Studio</div>
                             <div class="ticker-card"><img src="../assets/icons/dropbox.svg" alt="Dropbox">Dropbox</div>
@@ -587,6 +773,8 @@
                             <div class="ticker-card"><img src="../assets/icons/claude.svg" alt="">Claude</div>
                             <div class="ticker-card"><img src="../assets/icons/opencode.svg" alt="">Opencode</div>
                             <div class="ticker-card"><img src="../assets/icons/codex.svg" alt="">Codex</div>
+                            <div class="ticker-card"><img src="../assets/icons/iterm2.svg" alt="">iTerm2</div>
+                            <div class="ticker-card"><img src="../assets/icons/terminal.svg" alt="">Terminal</div>
                             <div class="ticker-card"><img src="../assets/icons/xcode.svg" alt="">Xcode</div>
                             <div class="ticker-card"><img src="../assets/icons/android-studio.svg" alt="">Android Studio</div>
                             <div class="ticker-card"><img src="../assets/icons/dropbox.svg" alt="">Dropbox</div>
@@ -637,6 +825,9 @@
                     </div>
                 </div>
             </div>
+            <div class="support-cta">
+                <a class="cta-primary" href="mailto:alexanderkvamme@gmail.com">Suggest an App</a>
+            </div>
         </section>
         <section class="section">
             <div class="split-panel">
@@ -652,72 +843,266 @@
             </div>
         </section>
 
-        <section class="section">
-            <h2>Notchification support</h2>
-            <p>We surface progress and status from the apps you already use.</p>
+        <section class="section support-section">
+            <h2>More apps added weekly!</h2>
+            <p class="support-subtext">We surface progress and status from the apps you already use.<br>If you have a special app in mind, send me an email and ill be happy to add it for you.</p>
             <div class="support-grid">
                 <div class="support-card">
-                    <h3>AI / Dev Tools</h3>
+                    <h3>System / Apps</h3>
+                    <div class="support-divider"></div>
                     <ul>
-                        <li>Claude — Claude CLI activity</li>
-                        <li>Opencode — Opencode CLI</li>
-                        <li>Codex — OpenAI Codex CLI</li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/finder.svg" alt="Finder"></span>
+                            <div>
+                                <span class="support-app">Finder</span>
+                                <div class="support-features">
+                                    <span class="support-feature">File copy</span>
+                                    <span class="support-feature">Move</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/installer.svg" alt="Installer"></span>
+                            <div>
+                                <span class="support-app">Installer</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Package installs</span>
+                                    <span class="support-feature">Progress</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/app-store.svg" alt="App Store"></span>
+                            <div>
+                                <span class="support-app">App Store</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Downloads</span>
+                                    <span class="support-feature">Updates</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/automator.svg" alt="Automator"></span>
+                            <div>
+                                <span class="support-app">Automator</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Workflow run</span>
+                                    <span class="support-feature">Stages</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/script-editor.svg" alt="Script Editor"></span>
+                            <div>
+                                <span class="support-app">Script Editor</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Script run</span>
+                                    <span class="support-feature">Output</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/downloads.svg" alt="Downloads"></span>
+                            <div>
+                                <span class="support-app">Downloads</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Chrome</span>
+                                    <span class="support-feature">Safari</span>
+                                    <span class="support-feature">Firefox</span>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="support-card">
-                    <h3>IDEs</h3>
+                    <h3>AI / Dev Tools</h3>
+                    <div class="support-divider"></div>
                     <ul>
-                        <li>Xcode — Build activity</li>
-                        <li>Android Studio — Gradle builds</li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/claude.svg" alt="Claude"></span>
+                            <div>
+                                <span class="support-app">Claude</span>
+                                <div class="support-features">
+                                    <span class="support-feature">CLI activity</span>
+                                    <span class="support-feature">Task progress</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/opencode.svg" alt="Opencode"></span>
+                            <div>
+                                <span class="support-app">Opencode</span>
+                                <div class="support-features">
+                                    <span class="support-feature">CLI sessions</span>
+                                    <span class="support-feature">Build status</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/codex.svg" alt="Codex"></span>
+                            <div>
+                                <span class="support-app">Codex</span>
+                                <div class="support-features">
+                                    <span class="support-feature">CLI activity</span>
+                                    <span class="support-feature">Runs</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/iterm2.svg" alt="iTerm2"></span>
+                            <div>
+                                <span class="support-app">iTerm2</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Terminal sessions</span>
+                                    <span class="support-feature">Run status</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/terminal.svg" alt="Terminal"></span>
+                            <div>
+                                <span class="support-app">Terminal</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Command runs</span>
+                                    <span class="support-feature">Activity</span>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="support-card">
                     <h3>Cloud Storage</h3>
+                    <div class="support-divider"></div>
                     <ul>
-                        <li>Dropbox — Sync activity</li>
-                        <li>Google Drive — Sync activity</li>
-                        <li>OneDrive — Sync activity</li>
-                        <li>iCloud — Sync activity</li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/dropbox.svg" alt="Dropbox"></span>
+                            <div>
+                                <span class="support-app">Dropbox</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Sync activity</span>
+                                    <span class="support-feature">Uploads</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/google-drive.svg" alt="Google Drive"></span>
+                            <div>
+                                <span class="support-app">Google Drive</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Sync activity</span>
+                                    <span class="support-feature">Uploads</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/onedrive.svg" alt="OneDrive"></span>
+                            <div>
+                                <span class="support-app">OneDrive</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Sync activity</span>
+                                    <span class="support-feature">Uploads</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/icloud.svg" alt="iCloud"></span>
+                            <div>
+                                <span class="support-app">iCloud</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Sync activity</span>
+                                    <span class="support-feature">Transfers</span>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="support-card">
-                    <h3>System / Apps</h3>
+                    <h3>Creative</h3>
+                    <div class="support-divider"></div>
                     <ul>
-                        <li>Finder — File copy operations</li>
-                        <li>Installer — macOS package installs</li>
-                        <li>App Store — App downloads</li>
-                        <li>Automator — Workflow execution</li>
-                        <li>Script Editor — Script execution</li>
-                        <li>Downloads — Browser downloads (Chrome, Safari, Firefox)</li>
-                        <li>DaVinci Resolve — Video rendering</li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/davinci-resolve.svg" alt="DaVinci Resolve"></span>
+                            <div>
+                                <span class="support-app">DaVinci Resolve</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Render</span>
+                                    <span class="support-feature">Export</span>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="support-card">
                     <h3>Communication</h3>
+                    <div class="support-divider"></div>
                     <ul>
-                        <li>Teams — Camera preview when in calls</li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/teams.svg" alt="Teams"></span>
+                            <div>
+                                <span class="support-app">Teams</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Camera preview</span>
+                                    <span class="support-feature">Call status</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="support-card">
+                    <h3>IDE</h3>
+                    <div class="support-divider"></div>
+                    <ul>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/xcode.svg" alt="Xcode"></span>
+                            <div>
+                                <span class="support-app">Xcode</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Build activity</span>
+                                    <span class="support-feature">Indexing</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/android-studio.svg" alt="Android Studio"></span>
+                            <div>
+                                <span class="support-app">Android Studio</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Gradle builds</span>
+                                    <span class="support-feature">Sync</span>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="support-card">
                     <h3>Calendar</h3>
+                    <div class="support-divider"></div>
                     <ul>
-                        <li>Calendar — Morning overview & meeting reminders</li>
+                        <li class="support-item">
+                            <span class="support-icon"><img src="../assets/icons/calendar.svg" alt="Calendar"></span>
+                            <div>
+                                <span class="support-app">Calendar</span>
+                                <div class="support-features">
+                                    <span class="support-feature">Morning overview</span>
+                                    <span class="support-feature">Meeting reminders</span>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section buy-section">
             <div class="buy-cta">
                 <a class="cta-primary" href="https://homeofficesinternational.lemonsqueezy.com/checkout/buy/f92881cf-2596-497c-b404-b1783a46bce3">Buy Notchification</a>
-                <a class="cta-secondary" href="https://featurefest.dev/thankyou">Try for free</a>
+                <a class="cta-secondary" href="/notchification/Notchification-1.0.31.zip">Try for free</a>
             </div>
             <div class="buy-meta">
                 <span>Secure checkout</span>
                 <span>Cancel anytime</span>
-                <span>macOS app</span>
             </div>
-            <div class="buy-cta-note">Free trial. $9 USD / year. Risk-free money-back.</div>
+            <div class="buy-cta-note">Risk-free money-back.</div>
         </section>
 
         <footer>
